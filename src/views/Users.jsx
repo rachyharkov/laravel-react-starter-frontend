@@ -1,7 +1,9 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import Swal from "sweetalert2"
 import axiosClient from "../axios-client"
+import Alert from "../components/Alert"
 
 export default function Users() {
 
@@ -12,6 +14,29 @@ export default function Users() {
   useEffect(() => {
     getUsers()
   },[])
+
+  const onDelete = (user) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: `You won't be able to revert this!`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosClient.delete(`/users/${user.id}`)
+          .then(({data}) => {
+            Alert('Success!', 'Your file has been deleted.', 'success')
+            getUsers()
+          })
+          .catch(err => {
+            Alert('Error!', 'Your file has not been deleted.', 'error')
+          })
+      }
+    })
+  }
 
   const getUsers = () => {
     setLoading(true)
@@ -53,7 +78,7 @@ export default function Users() {
                 <td>
                   <Link to={`/users/${u.id}`} className="btn-edit">Edit</Link>
                   &nbsp;
-                  <button className="btn-delete">Delete</button>
+                  <button onClick={ev => onDelete(u)} className="btn-delete">Delete</button>
                 </td>
               </tr>
             ))}

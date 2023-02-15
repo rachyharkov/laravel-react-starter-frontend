@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, Navigate, Outlet } from "react-router-dom";
 import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
+import { ToastSuccess } from "./Alert";
 
 export default function DefaultLayout() {
   const {usernya, tokennya, setUsernya, setTokennya} = useStateContext()
@@ -17,6 +18,7 @@ export default function DefaultLayout() {
     axiosClient.post('/logout').then(() => {
       setUsernya(null)
       setTokennya(null)
+      ToastSuccess('Logout Success', 'See you again')
     }).catch(err => {
       console.log(err)
     })

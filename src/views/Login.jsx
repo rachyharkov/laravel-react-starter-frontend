@@ -1,6 +1,7 @@
 import { useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import axiosClient from "../axios-client"
+import { ToastSuccess } from "../components/Alert"
 import { useStateContext } from "../contexts/ContextProvider"
 
 export default function Login() {
@@ -25,6 +26,7 @@ export default function Login() {
     .then(({data}) => {
       setUsernya(data.user)
       setTokennya(data.token)
+      ToastSuccess('Login Success', 'Welcome back ' + data.user.name)
     })
     .catch(err => {
       const response = err.response
