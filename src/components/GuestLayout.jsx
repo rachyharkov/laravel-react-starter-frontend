@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function GuestLayout() {
@@ -12,7 +12,6 @@ export default function GuestLayout() {
   return (
     <div className="GuestLayout">
       <div className="GuestLayout__content">
-        For Guest Users Only
         <Outlet/>
       </div>
     </div>
