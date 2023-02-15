@@ -70,8 +70,8 @@ export default function Users() {
           </thead>
           {loading && <tbody>
             <tr>
-              <td colSpan="5" className="text-center">
-                <i className="fa fa-spinner fa-spin"></i>
+              <td colSpan="5" className="text-center" style={{padding: '2rem'}}>
+                <i className="fa fa-spinner fa-spin" style={{fontSize: 24}}></i>
               </td>
             </tr>
             </tbody>
