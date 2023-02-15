@@ -14,7 +14,7 @@ const Alert = (props) => {
 
 const Toast = Swal.mixin({
   toast: true,
-  position: 'top',
+  position: 'bottom-end',
   showConfirmButton: false,
   timer: 3000,
   timerProgressBar: true,
