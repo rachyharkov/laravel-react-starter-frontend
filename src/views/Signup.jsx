@@ -46,19 +46,11 @@ export default function Signup() {
           <h1 className="title">
             Signup for a new account
           </h1>
-          {errors &&
-              <div className="alert">
-                <ul>
-                  {Object.keys(errors).map(key => {
-                    return (
-                      <li key={key}>
-                        <strong>{key}</strong> {errors[key]}  
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-          }
+          {errors && <div className="alert">
+            {Object.keys(errors).map(key => (
+              <p key={key}>{errors[key][0]}</p>
+            ))}
+          </div>}
           <input ref={nameRef} type="text" placeholder="Full Name"/>
           <input ref={emailRef} type="email" placeholder="Email"/>
           <input ref={passwordRef} type="password" placeholder="Password"/>
