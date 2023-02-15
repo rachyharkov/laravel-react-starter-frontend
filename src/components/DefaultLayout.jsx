@@ -4,7 +4,7 @@ import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
 
 export default function DefaultLayout() {
-  const {usernya, tokennya, setUsernya} = useStateContext()
+  const {usernya, tokennya, setUsernya, setTokennya} = useStateContext()
 
   if(!tokennya) {
     return (
@@ -14,6 +14,12 @@ export default function DefaultLayout() {
 
   const onLogout = (ev) => {
     ev.preventDefault()
+    axiosClient.post('/logout').then(() => {
+      setUsernya(null)
+      setTokennya(null)
+    }).catch(err => {
+      console.log(err)
+    })
   }
   useEffect(() => {
     axiosClient.get('/user').then(({data}) => {
