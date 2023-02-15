@@ -24,35 +24,31 @@ const Toast = Swal.mixin({
   }
 })
 
-export const ToastSuccess = (title, text) => {
+export const ToastSuccess = (title) => {
   Toast.fire({
     icon: 'success',
     title: title,
-    text: text
   })
 }
 
-export const ToastError = (title, text) => {
+export const ToastError = (title) => {
   Toast.fire({
     icon: 'error',
     title: title,
-    text: text
   })
 }
 
-export const ToastWarning = (title, text) => {
+export const ToastWarning = (title) => {
   Toast.fire({
     icon: 'warning',
     title: title,
-    text: text
   })
 }
 
-export const ToastInfo = (title, text) => {
+export const ToastInfo = (title) => {
   Toast.fire({
     icon: 'info',
     title: title,
-    text: text
   })
 }
 

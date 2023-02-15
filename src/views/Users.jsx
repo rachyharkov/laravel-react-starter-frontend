@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Swal from "sweetalert2"
 import axiosClient from "../axios-client"
-import Alert from "../components/Alert"
+import Alert, { ToastError, ToastInfo, ToastSuccess } from "../components/Alert"
 
 export default function Users() {
 
@@ -28,11 +28,11 @@ export default function Users() {
       if (result.isConfirmed) {
         axiosClient.delete(`/users/${user.id}`)
           .then(({data}) => {
-            Alert('Success!', 'Your file has been deleted.', 'success')
+            ToastSuccess('User deleted successfully')
             getUsers()
           })
           .catch(err => {
-            Alert('Error!', 'Your file has not been deleted.', 'error')
+            ToastError('Failed to delete user')
           })
       }
     })

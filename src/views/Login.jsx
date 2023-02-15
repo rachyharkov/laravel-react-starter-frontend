@@ -26,7 +26,7 @@ export default function Login() {
     .then(({data}) => {
       setUsernya(data.user)
       setTokennya(data.token)
-      ToastSuccess('Login Success', 'Welcome back ' + data.user.name)
+      ToastSuccess('Login Success, Welcome back ' + data.user.name)
     })
     .catch(err => {
       const response = err.response

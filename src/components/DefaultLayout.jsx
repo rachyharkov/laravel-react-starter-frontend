@@ -18,7 +18,7 @@ export default function DefaultLayout() {
     axiosClient.post('/logout').then(() => {
       setUsernya(null)
       setTokennya(null)
-      ToastSuccess('Logout Success', 'See you again')
+      ToastSuccess('Logout Success')
     }).catch(err => {
       console.log(err)
     })
