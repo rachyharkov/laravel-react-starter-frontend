@@ -68,6 +68,14 @@ export default function Users() {
               <th>Actions</th>
             </tr>
           </thead>
+          {loading && <tbody>
+            <tr>
+              <td colSpan="5" className="text-center">
+                <i className="fa fa-spinner fa-spin"></i>
+              </td>
+            </tr>
+            </tbody>
+          }
           <tbody>
             {users.map(u => (
               <tr key={u.id}>
